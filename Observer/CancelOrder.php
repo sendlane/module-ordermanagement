@@ -1,6 +1,6 @@
 <?php
 
-namespace Klarna\Ordermanagement\Observer;
+namespace Sendlane\Ordermanagement\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
