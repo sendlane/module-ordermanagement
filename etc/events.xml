@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="sendlane_cancel_order">
-        <observer name="sendlane_cancel_order" instance="Sendlane\Ordermanagement\Observer\CancelOrder"/>
+    <event name="sales_order_place_after">
+        <observer name="sendlane_placed_order" instance="Sendlane\Ordermanagement\Observer\PlacedOrder" />
+    </event>
+    <event name="sales_order_payment_pay">
+        <observer name="sendlane_fulfilled_order" instance="Sendlane\Ordermanagement\Observer\FulfilledOrder" />
+    </event>
+    <event name="checkout_cart_save_before">
+        <observer name="sendlane_started_checkout" instance="Sendlane\Ordermanagement\Observer\StartedCheckout" />
+    </event>
+    <event name="checkout_submit_all_after">
+        <observer name="sendlane_ordered_product" instance="Sendlane\Ordermanagement\Observer\OrderedProduct" />
     </event>
 </config>

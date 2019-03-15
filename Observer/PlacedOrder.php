@@ -6,20 +6,22 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Psr\Log\LoggerInterface;
 
-class CancelOrder implements ObserverInterface
+class PlacedOrder implements ObserverInterface
 {
-    private $log;
+    protected $logger;
 
-    public function __construct(LoggerInterface $log)
+    public function __construct(LoggerInterface$logger)
     {
-        $this->log = $log;
+        $this->logger = $logger;
     }
-    
+
     public function execute(Observer $observer)
     {
+        $this->logger->info("PlacedOrder");
+
         try {
             $order = $observer->getEvent()->getOrder();
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->logger->info($e->getMessage());
         }
     }
